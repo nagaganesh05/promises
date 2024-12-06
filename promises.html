@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promises</title>
+</head>
+
+<body>
+    <script>
+        const promise = new Promise((resolve, reject) => {
+            return resolve();
+            return reject();
+        })
+        console.log(promise.then((res) => { console.log(res) }).catch((rej) => console.log(rej)));
+
+
+        const promised = new Promise((res, rej) => {
+            let boolean = true;
+            if (boolean) {
+                res("receiving", { id: 1, name: "alice" })
+            }
+            else {
+                rej("rejected")
+            }
+        })
+        promised.then((res1) => { console.log(res1) })
+
+
+        const promises = new Promise((a, b) => {
+            let data = false;
+            if (!data) {
+                a("receiving", { id: 1, name: "ganesh" })
+            } else {
+                b("rejected")
+            }
+        })
+        promises.then((a) => {
+            console.log(a)
+        }).catch((b) => {
+            console.log(b)
+        })
+
+
+
+        const prom = new Promise((a, b) => {
+            let data = false;
+            if (data) {
+                a("receiving", { id: 1, name: "saisathwik" })
+            }
+            else {
+                b("rejected")
+            }
+        })
+        prom.then((a) => {
+            console.log(a)
+        }).then((b) => {
+            console.log(b)
+        })
+
+
+        const new1 = new Promise((a, b) => {
+            let data = false;
+            if (data) {
+                a({ id: 1, name: "saisathwik" })
+            }
+            else {
+                b("rejected")
+            }
+        })
+        new1.then((a) => {
+            console.log(a.name)
+        }).catch((b) => {
+            console.log(b)
+        })
+
+
+
+        const new2 = new Promise((a, b) => {
+            let data = true;
+            if (data) {
+                a({ id: 1, name: "saisathwik" })
+            }
+            else {
+                b("rejected")
+            }
+        })
+        new2.then((a) => {
+            console.log(a.name)
+        }).catch((b) => {
+            console.log(b)
+        })
+
+
+
+        const resolve = Promise.resolve("resolve");
+        const reject = Promise.reject("rejected");
+        console.log(resolve);
+        console.log(reject);
+
+
+        // Promise all
+
+        const fetchUsers = new Promise((res) => {
+            setTimeout(() => {
+                res("users");
+            }, 1000)
+        });
+        const fetchPosts = new Promise((res) => {
+            setTimeout(() => {
+                res("posts")
+            }, 2000)
+        })
+        const fetchComments = new Promise((res) => {
+            setTimeout(() => {
+                res("comments")
+            }, 3000)
+        })
+
+        Promise.all([fetchUsers, fetchPosts, fetchComments]).then((res) => {
+            console.log(res)
+        })
+
+
+        // const fetchUsers = new Promise((res) => {
+        //     setTimeout(() => {
+        //         res("users");
+        //     }, 1000)
+        // });
+        // const fetchPosts = new Promise((_, rej) => {
+        //     setTimeout(() => {
+        //         rej("posts")
+        //     }, 2000)
+        // })
+        // const fetchComments = new Promise((a) => {
+        //     setTimeout(() => {
+        //         a("comments")
+        //     }, 3000)
+        // })
+
+        // Promise.all([fetchUsers, fetchPosts, fetchComments]).then((res) => {
+        //     console.log(res)
+        // }).catch((rej) => { console.log(rej) })
+
+
+
+
+        // const fetchUsers = new Promise((res) => {
+        //     setTimeout(() => {
+        //         res("users");
+        //     }, 1000)
+        // });
+        // const fetchPosts = new Promise((_, rej) => {
+        //     setTimeout(() => {
+        //         rej("posts")
+        //     }, 2000)
+        // })
+        // const fetchComments = new Promise((_, b) => {
+        //     setTimeout(() => {
+        //         b("comments")
+        //     }, 3000)
+        // })
+
+        // Promise.all([fetchUsers, fetchPosts, fetchComments]).then((res) => {
+        //     console.log(res)
+        // }).catch((rej) => { console.log(rej) })
+
+
+
+
+
+        const userData = new Promise((res, rej) => { res("data") });
+        const userLikes = new Promise((res) => { res("Likes") })
+        Promise.all([userData, userLikes]).then((a) => { console.log(a) })
+
+
+
+    </script>
+</body>
+
+</html>

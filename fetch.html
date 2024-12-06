@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+</head>
+<body>
+   
+    <script>
+       
+        const fetching = fetch("https://fakestoreapi.com/products");
+        const data = fetching.then((res)=>{return res.json()}).then((dat)=>{return dat});
+        console.log(data.then((res)=>{console.log(res)}))
+
+
+        const fetchers = fetch("https://fakestoreapi.com/products?limit=5");
+        const data1 = fetchers.then((res)=>{return res.json()}).then((data)=>{return data});
+        console.log(data1.then((res)=>{console.log(res)}))
+
+
+
+        const fetchingData = fetch("https://fakestoreapi.com/products/categories");
+        const datas = fetchingData.then((res)=>{return res.json()}).then((res)=>{return res});
+        console.log(datas.then((res)=>console.log(res)))
+    </script>
+</body>
+</html>
